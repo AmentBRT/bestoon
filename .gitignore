@@ -2,6 +2,7 @@
 db.sqlite3
 settings.py
 
+# Django github
 *.egg-info
 *.pot
 *.py[co]
