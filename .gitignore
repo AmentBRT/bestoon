@@ -1,4 +1,7 @@
+# My ignores
 db.sqlite3
+settings.py
+
 *.egg-info
 *.pot
 *.py[co]
