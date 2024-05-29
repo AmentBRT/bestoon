@@ -13,48 +13,35 @@
     <title>بستون،  پول کجاست؟</title>
 
     <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" crossorigin="anonymous">
-    <link rel="stylesheet" href="{% static 'css/bootstrap-rtl.css' %}" crossorigin="anonymous">
-    <link rel="stylesheet" href="{% static 'css/bootstrap-theme.min.css' %}"  crossorigin="anonymous">
-    <link rel="stylesheet" href="{% static 'css/style.css' %}" >
+    <link rel="stylesheet" href="{% static 'css/bootstrap.rtl.css' %}" crossorigin="anonymous">
+    {% comment %} <link rel="stylesheet" href="{% static 'css/bootstrap-theme.min.css' %}"  crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" > {% endcomment %}
     <!-- Latest compiled and minified CSS -->
 
-    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-
-
+    {% comment %} <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script> {% endcomment %}
   </head>
 
   <body>
-
-
-
-
-
         <!-- Navigation -->
-        <nav class="navbar navbar-inverse navbar-fixed-top rtl" role="navigation">
-            <div class="container">
+        <nav class="navbar navbar-expand-lg navbar-fixed-top rtl" role="navigation">
+            <div class="container d-flex">
                 <!-- Brand and toggle get grouped for better mobile display -->
-                <div class="navbar-header navbar-right">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-
-                    <a class="navbar-brand" href="{% url 'index' %}">			                
-                      بستون
-                    </a>
-                </div>
+                <button class="navbar-toggle" type="button" data-bs-toggle="collapse" data-bs-target="#navbar-collapse-1" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <a class="navbar-brand" href="{% url 'index' %}">بستون</a>
                 <!-- Collect the nav links, forms, and other content for toggling -->
-                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                  <ul class="nav navbar-nav navbar-left">
+                <div class="collapse navbar-collapse mx-auto" id="navbar-collapse-1">
+                  <ul class="navbar-nav">
                     {% if user.is_authenticated %}
-                    <!--<li><a href="/static/todoer_release.apk">اپ اندروید</a></li>-->
-                    <li><a href="{% url 'logout' %}">خروج</a></li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="{% url 'logout' %}">خروج</a>
+                    </li>
                     {% else %}
-                    <li><a href="{% url 'register' %}">ثبت نام</a></li>
-                    <!--<li><a href="/static/todoer_release.apk">اپ اندروید</a></li>-->
+                    <li class="nav-item">
+                      <a class="nav-link" href="{% url 'register' %}">ثبت نام</a>
+                    </li>
                     {% endif %}
                   </ul>
                 </div>
@@ -73,27 +60,27 @@
 
         </div>
 
-        <footer class="footer">
-          <div class="">
+        <footer class="footer d-flex mx-auto">
+          <p>
+            <strong>بستون</strong> یک پروژهٔ آزاد و متن‌باز است.
+            <br>
+            <a href='https://github.com/AmentBRT/bestoon'>مخرن گیت‌هاب پروژه</a>
+          </p>
+          {% comment %} <div class="">
             <div class="">
-
-              <p>
-                <strong>بستون</strong> یک پروژهٔ آزاد و متن‌باز است.<br>
-			<a href='https://github.com/AmentBRT/bestoon'>مخرن گیت‌هاب پروژه</a> |
-              </p>
             </div>
-          </div>
+          </div> {% endcomment %}
         </footer>
         <!-- /.container -->
 
         <!-- jQuery -->
-        <script src="{% static 'js/jquery.min.js' %}"></script>
+        {% comment %} <script src="{% static 'js/jquery.min.js' %}"></script> {% endcomment %}
 
         <!-- Bootstrap Core JavaScript -->
         <script src="{% static 'js/bootstrap.min.js' %}"></script>
 
 
-        <script src="{% static 'js/awesome.js' %}"></script>
+        {% comment %} <script src="{% static 'js/awesome.js' %}"></script> {% endcomment %}
 
 
         {% block footer %}
@@ -108,5 +95,5 @@
           ga('create', 'UA-86661525-2', 'auto');
           ga('send', 'pageview');
         </script>
-      </body>
-    </html>
+  </body>
+</html>

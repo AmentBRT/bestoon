@@ -21,6 +21,12 @@ random_str = lambda n: ''.join(
     SystemRandom().choice(ascii_letters + digits) for _ in range(n)
 )
 
+
+def index(request):
+    context = {}
+    return render(request, 'index.html', context)
+
+
 def register(request):
     if request.method == 'POST':
         if 'requestcode' in request.POST:  # form is filled. if not spam, generate code and save in db, wait for email confirmation, return message
@@ -108,6 +114,7 @@ def register(request):
         # context = {'message': ''}
         # return render(request, 'register.html', context)
 
+
 @csrf_exempt
 def submit_expense(request):
     """user submits an expense"""
@@ -127,6 +134,7 @@ def submit_expense(request):
     return JsonResponse({
         'status': 'ok',
     },  encoder=JSONEncoder)
+
 
 @csrf_exempt
 def submit_income(request):
