@@ -30,7 +30,6 @@ def register(request):
 
             # duplicate email
             if User.objects.filter(email=email).exists():
-                print(f'{User.objects.get(email=email) = }')
                 context = {
                     'message': 'متاسفانه این ایمیل قبلا استفاده شده است. در صورتی که این ایمیل شما است، از صفحه ورود گزینه فراموشی پسورد رو انتخاب کنین. ببخشید که فرم ذخیره نشده.- درست می شه',
                     'email': email if email != None else '',
@@ -115,7 +114,6 @@ def submit_expense(request):
 
     # TODO: validate data. user might be fake. token might be fake. amount might be...
     this_token = request.POST.get('token')
-    print(f'{this_token = }')
     this_user = User.objects.get(token__token=this_token)
     if 'date' not in request.POST:
         date = datetime.now()
