@@ -2,10 +2,10 @@
 {% load static %}
 
 {% block content %}
-<script src='https://www.google.com/recaptcha/api.js'></script>
 
-<div class="row">
-    <div class="col-lg-12">
+
+
+{% comment %} <script src='https://www.google.com/recaptcha/api.js'></script> {% endcomment %}
 
 {% if form.errors %}
 <p>
@@ -23,9 +23,11 @@
     </p>
     {% endif %}
 {% endif %}
+
 <p>
 اگر اینجا هستین حتما می دونین ماجرا چیه، برای عضو شدن از فرم زیر شروع کنین
 </p>
+
 <p>
   البته این فعلا یک سیستم شخصی است و این یک نکته مثبته: من این رو برای استفاده خودم توسعه می دم و در نتیجه دائما باید برای یک استفاده کننده واقعی بهینه بشه. اگر شما
   هم گپ یا پیشنهادی درموردش داشتین
@@ -34,66 +36,64 @@
   </a>
 </p>
 
-  {% if message %}
-  <div class="bs-callout bs-callout-info">
-    <h5>{{ message|safe }}</h5>
-  </div>
-  {% endif %}
+{% if message %}
+<div class="bs-callout bs-callout-info">
+  <h5>{{ message|safe }}</h5>
+</div>
+{% endif %}
 
 
 
 
-  <div class="row">
-    <div class="col-md-6 col-md-offset-3">
-      <div class="panel panel-default">
-        <div class="panel-heading">
-          <h3 class="panel-title">ثبت نام</h3>
-        </div>
-        <div class="panel-body">
-          <form class="form-horizontal" method="POST" action="{% url 'register' %}">
-            {% csrf_token %}
-            <input type="hidden" name="requestcode" value="True" />
-            <input type="hidden" name="next" value="{{ next }}" />
-            <div class="form-group">
-              <label for="username" class="col-sm-2 control-label" >نام کاربری</label>
-              <div class="col-sm-10">
-                <input type="text" name="username" class="form-control" placeholder="حداقل سه کاراکتر" required pattern=".{3,}">
-              </div>
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <div class="card text-bg-light">
+      <div class="card-header">
+        <h3 class="card-title">ثبت نام</h3>
+      </div>
+      <div class="card-body">
+        <form class="form-horizontal" method="POST" action="{% url 'register' %}">
+          {% csrf_token %}
+          <input type="hidden" name="requestcode" value="True" />
+          <input type="hidden" name="next" value="{{ next }}" />
+          <div class="form-group">
+            <label for="username" class="col-sm-2 control-label" >نام کاربری</label>
+            <div class="col-sm-10">
+              <input type="text" name="username" class="form-control" placeholder="حداقل سه کاراکتر" required pattern=".{3,}">
             </div>
-            <div class="form-group">
-              <label for="email" class="col-sm-2 control-label">ایمیل شما</label>
-              <div class="col-sm-10">
-                <input type="email" name="email" class="form-control"  placeholder="لینک تایید ساخت اکانت به این آدرس فرستاده می‌شود" required>
-              </div>
+          </div>
+          <div class="form-group">
+            <label for="email" class="col-sm-2 control-label">ایمیل شما</label>
+            <div class="col-sm-10">
+              <input type="email" name="email" class="form-control"  placeholder="لینک تایید ساخت اکانت به این آدرس فرستاده می‌شود" required>
             </div>
-            <div class="form-group">
-              <label for="password" class="col-sm-2 control-label" >کلمه عبور</label>
-              <div class="col-sm-10">
-                <input type="password" name="password" class="form-control"  placeholder="حداقل پنج کاراکتر" required pattern=".{5,}">
-              </div>
+          </div>
+          <div class="form-group">
+            <label for="password" class="col-sm-2 control-label" >کلمه عبور</label>
+            <div class="col-sm-10">
+              <input type="password" name="password" class="form-control"  placeholder="حداقل پنج کاراکتر" required pattern=".{5,}">
             </div>
-            {% comment %} <div class="form-group">
-              <label for="inputPassword3" class="col-sm-2 control-label" >ربات نیستید؟</label>
-              <div class="col-sm-10">
-                <div class="g-recaptcha" data-sitekey="6LeVvA8UAAAAALjoTeoU5_n7NDabQcNdZiq5RaQV"></div>
-              </div>
-            </div> {% endcomment %}
+          </div>
+          {% comment %} <div class="form-group">
+            <label for="inputPassword3" class="col-sm-2 control-label" >ربات نیستید؟</label>
+            <div class="col-sm-10">
+              <div class="g-recaptcha" data-sitekey="6LeVvA8UAAAAALjoTeoU5_n7NDabQcNdZiq5RaQV"></div>
+            </div>
+          </div> {% endcomment %}
 
 
 
-            <div class="form-group">
-              <div class="col-sm-offset-2 col-sm-10">
-                <button type="submit" class="btn btn-default">درخواست ایمیل فعال‌سازی اکانت</button>
-              </div>
+          <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+              <button type="submit" class="btn btn-primary">درخواست ایمیل فعال‌سازی اکانت</button>
             </div>
-          </form>
-        </div>
+          </div>
+        </form>
       </div>
     </div>
   </div>
+</div>
 
 
-</div>
-</div>
 
 {% endblock %}
